@@ -1,5 +1,7 @@
 package com.mellowism.jwc.joinworldcommand.events;
 
+import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,8 +18,9 @@ public class JoinWorld implements Listener {
 
     public void joinWorld (PlayerChangedWorldEvent e){
 
+        World world = e.getPlayer().getWorld();
         Player player = e.getPlayer();
-        player.sendMessage("Hello" + e.getPlayer().getWorld());
+        player.sendMessage("Hello " + ChatColor.GREEN + world.getName());
 
     }
 }
