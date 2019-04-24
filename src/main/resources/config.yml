@@ -1,2 +1,2 @@
-World: world
-  Command: hello
+world:
+  command: hello
