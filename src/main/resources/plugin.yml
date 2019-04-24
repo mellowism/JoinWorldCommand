@@ -1,0 +1,7 @@
+name: JoinWorldCommand
+version: ${project.version}
+main: com.mellowism.jwc.joinworldcommand.JoinWorldCommand
+api-version: 1.13
+authors: [mellowism]
+description: A plugin that makes it possible to run commands when a player enters a world.
+website: www.mellowism.com
