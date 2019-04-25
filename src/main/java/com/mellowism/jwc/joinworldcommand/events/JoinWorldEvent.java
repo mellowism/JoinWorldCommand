@@ -16,7 +16,7 @@ import org.bukkit.plugin.Plugin;
  * <p>
  * www.mellowism.com (mellow@mellowism.com)
  */
-public class JoinWorld implements Listener {
+public class JoinWorldEvent implements Listener {
 
     Plugin plugin = JoinWorldCommand.getPlugin(JoinWorldCommand.class);
 

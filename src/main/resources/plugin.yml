@@ -8,3 +8,5 @@ website: www.mellowism.com
 commands:
   hello:
     description: Default command for joining a world.
+  jwc:
+    description: Default prefix for plugins commands
