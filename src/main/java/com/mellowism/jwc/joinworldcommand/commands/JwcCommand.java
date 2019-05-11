@@ -31,8 +31,8 @@ public class JwcCommand implements CommandExecutor {
                 //If 1st argument (0) is reload, reload config!
             }else if (args[0].equalsIgnoreCase("reload")) {
                 if (player.hasPermission("jwc.reload")){
-                    player.sendMessage(ChatColor.GREEN + "JoinWorldCommand reloaded");
-                    System.out.println(ChatColor.GREEN + "JoinWorldCommand reloaded");
+                    player.sendMessage(ChatColor.YELLOW + "JoinWorldCommand " + ChatColor.GREEN +  "reloaded");
+                    System.out.println(ChatColor.YELLOW + "JoinWorldCommand " + ChatColor.GREEN +  "reloaded");
                     plugin.reloadConfig();
                 }
             }else{
@@ -42,7 +42,7 @@ public class JwcCommand implements CommandExecutor {
             }
             //If you are not player executing command:
         }else{
-            System.out.println(ChatColor.YELLOW + "JoinWorldCommand reloaded");
+            System.out.println(ChatColor.YELLOW + "JoinWorldCommand " + ChatColor.GREEN +  "reloaded");
             plugin.reloadConfig();
         }
         return true;
