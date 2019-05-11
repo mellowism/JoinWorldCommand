@@ -18,8 +18,14 @@ public class HelloWorldCommand implements CommandExecutor {
 
         if(sender instanceof Player) {
             Player player = (Player) sender;
-            player.sendMessage(ChatColor.GOLD + "Hello " + player.getWorld().getName());
-         }
+                if (player.hasPermission("jwc.hello")){
+                    player.sendMessage(ChatColor.GOLD + "Hello " + player.getWorld().getName());
+                }else{
+                    System.out.println(ChatColor.GREEN + player.getDisplayName() + ChatColor.RED + " does not have permission to say hello to the world. " + ChatColor.GREEN + "[" + ChatColor.YELLOW + "JWC" + ChatColor.GREEN + "]" );
+                }
+         }else{
+            System.out.println("Command <Hello> has to be sent by a player.");
+        }
         return true;
     }
 }

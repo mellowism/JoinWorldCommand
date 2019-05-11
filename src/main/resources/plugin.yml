@@ -6,7 +6,15 @@ authors: [mellowism]
 description: A plugin that makes it possible to run commands when a player enters a world.
 website: www.mellowism.com
 commands:
-  hello:
-    description: Default command for joining a world.
-  jwc:
-    description: Default prefix for plugins commands
+  jwc_hello:
+    description: Default command when joining a world.
+    usage: /<command>
+    aliases: [hello]
+  joinworldcommand:
+    description: Default prefix for JoinWorldCommand's commands
+    usage: /<command>
+    aliases: jwc
+permissions:
+  jwc.*:
+    default: op
+    description: Give players with op every permission by default.
