@@ -1,6 +1,6 @@
 # JoinWorldCommand
 
-Simple plugin that makes it possible to add commands that execute when a player joins a world.
+A simple plugin that makes it possible to add commands that execute when a player joins a world.
 
 ## Features
 - Color code support
