@@ -7,16 +7,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-/*
-To do:
-- fix set command
-Optional:
-- Use placeholder api?)
-- Multiple commands (Has to be done with arraylist I suppose)
-- Permission based. Only run command if you have the permission.
-*/
-
-
 public final class JoinWorldCommand extends JavaPlugin {
 
     @Override
@@ -32,7 +22,7 @@ public final class JoinWorldCommand extends JavaPlugin {
         saveDefaultConfig();
 
         //This is for enabling my commands:
-        this.getCommand("jwc_hello").setExecutor(new HelloWorldCommand());
+        this.getCommand("jwc_hello").setExecutor(new HelloWorldCommand(this));
         this.getCommand("joinworldcommand").setExecutor(new JwcCommand(this));
     }
 

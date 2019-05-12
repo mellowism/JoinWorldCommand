@@ -2,13 +2,14 @@
 # +------------------------------------------------------+ #
 # |                   JoinWorldCommand                   | #
 # +------------------------------------------------------+ #
-############################################################
-#                  Thanks for downloading!
+##################Thanks for downloading!###################
+#
 #
 #world_commands:
 #  world: #This is the name of your world.
 #    command: hello #This is the command you want to execute. Use %player% for the name of the player that joins the world.
 #    executor: player #Who executes the command, player or console.
+# Example to create a join message: tellraw @a {"text":"%player% joined the world!", "color":"gold"}
 #
 world_commands:
   world:

@@ -32,8 +32,11 @@ public class JwcCommand implements CommandExecutor {
             }else if (args[0].equalsIgnoreCase("reload")) {
                 if (player.hasPermission("jwc.reload")){
                     player.sendMessage(ChatColor.YELLOW + "JoinWorldCommand " + ChatColor.GREEN +  "reloaded");
-                    System.out.println(ChatColor.YELLOW + "JoinWorldCommand " + ChatColor.GREEN +  "reloaded");
+                    plugin.getServer().getConsoleSender().sendMessage(ChatColor.YELLOW + "JoinWorldCommand " + ChatColor.GREEN + "reloaded");
                     plugin.reloadConfig();
+                }else{
+                    player.sendMessage(ChatColor.RED + "You do not have the permission " + ChatColor.GREEN +  "jwc.reload");
+                    plugin.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[" + ChatColor.YELLOW + "JWC" + ChatColor.GREEN + "]" + ChatColor.YELLOW + " - " + ChatColor.GREEN + player.getDisplayName() + ChatColor.RED + " does not have the permission " + ChatColor.GREEN +  "jwc.reload.");
                 }
             }else{
                 //If no arguments are present, send message to player:
@@ -42,7 +45,7 @@ public class JwcCommand implements CommandExecutor {
             }
             //If you are not player executing command:
         }else{
-            System.out.println(ChatColor.YELLOW + "JoinWorldCommand " + ChatColor.GREEN +  "reloaded");
+            plugin.getServer().getConsoleSender().sendMessage(ChatColor.YELLOW + "JoinWorldCommand " + ChatColor.GREEN + "reloaded");
             plugin.reloadConfig();
         }
         return true;
