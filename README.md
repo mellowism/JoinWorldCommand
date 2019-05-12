@@ -44,3 +44,14 @@ world_commands:
     command: hello
     executor: console
 ```
+
+
+##### Commands
+
+/jwc reload
+/hello
+
+##### Permissions
+
+jwc.reload
+jwc.hello
