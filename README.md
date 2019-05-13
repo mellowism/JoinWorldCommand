@@ -1,13 +1,13 @@
 # JoinWorldCommand
 
-Simple plugin that makes it possible to add commands that execute when a player joins a world.
+A simple plugin that makes it possible to add commands that execute when a player joins a world.
 
 ## Features
 - Color code support
 - Player placeholder
 - Send commands as Console or Player
 - Json support in form of tellraw command
-- Create join messages with links!
+- Create join message with link!
 
 
 
@@ -44,3 +44,13 @@ world_commands:
     command: hello
     executor: console
 ```
+
+##### Commands
+
+/jwc reload
+/hello
+
+##### Permissions
+
+jwc.reload
+jwc.hello

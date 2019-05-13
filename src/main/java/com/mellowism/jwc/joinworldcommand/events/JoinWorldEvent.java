@@ -29,14 +29,17 @@ public class JoinWorldEvent implements Listener {
         ConfigurationSection world_commandsSection = plugin.getConfig().getConfigurationSection("world_commands");
 
         for (String key : world_commandsSection.getKeys(false)){
-            world_commandsSection.get(key + ".world");
             if (plugin.getConfig().getString("world_commands." + key + ".executor").equals("console")){
                 if (e.getPlayer().getWorld().getName().equalsIgnoreCase(key) ){
-                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), plugin.getConfig().getString("world_commands." + key + ".command").replace("%player%", e.getPlayer().getName()));
+                    if (player.hasPermission("jwc." + key)){
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), plugin.getConfig().getString("world_commands." + key + ".command").replace("%player%", e.getPlayer().getName()));
+                    }
                 }
             }else{
                 if (e.getPlayer().getWorld().getName().equalsIgnoreCase(key) ){
-                    player.performCommand(plugin.getConfig().getString("world_commands." + key + ".command").replace("%player%", e.getPlayer().getName()));
+                    if (player.hasPermission("jwc." + key)){
+                        player.performCommand(plugin.getConfig().getString("world_commands." + key + ".command").replace("%player%", e.getPlayer().getName()));
+                    }
                 }
             }
         }
