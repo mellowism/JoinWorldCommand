@@ -2,44 +2,57 @@ package com.mellowism.jwc.joinworldcommand.events;
 
 import com.mellowism.jwc.joinworldcommand.JoinWorldCommand;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 
-/**
- * com.mellowism.jwc.joinworldcommand.events was created by mellowism on 24-Apr-19.
- * <p>
- * www.mellowism.com (mellow@mellowism.com)
- */
-public class JoinWorldEvent implements Listener {
+import java.util.Objects;
+
+public class JoinWorldEvent implements Listener
+{
 
     JoinWorldCommand plugin;
-    public JoinWorldEvent(JoinWorldCommand plugin) {
+    public JoinWorldEvent(JoinWorldCommand plugin)
+    {
         this.plugin = plugin;
     }
 
     @EventHandler
 
-    public void joinWorld (PlayerChangedWorldEvent e){
+    public void joinWorld (PlayerChangedWorldEvent e)
+    {
+        if(plugin.getConfig().getBoolean("enable_world_commands"))
+        {
 
-        Player player = e.getPlayer();
+            Player player = e.getPlayer();
+            ConfigurationSection world_commandsSection = plugin.getConfig().getConfigurationSection("world_commands");
 
-        ConfigurationSection world_commandsSection = plugin.getConfig().getConfigurationSection("world_commands");
-
-        for (String key : world_commandsSection.getKeys(false)){
-            if (plugin.getConfig().getString("world_commands." + key + ".executor").equals("console")){
-                if (e.getPlayer().getWorld().getName().equalsIgnoreCase(key) ){
-                    if (player.hasPermission("jwc." + key)){
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), plugin.getConfig().getString("world_commands." + key + ".command").replace("%player%", e.getPlayer().getName()));
+            assert world_commandsSection != null;
+            for (String key : world_commandsSection.getKeys(false))
+            {
+                if (Objects.requireNonNull(plugin.getConfig().getString("world_commands." + key + ".executor")).equalsIgnoreCase("console"))
+                {
+                    if (player.getWorld().getName().equalsIgnoreCase(key) )
+                    {
+                        if (player.hasPermission("jwc.world." + key))
+                        {
+                            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), Objects.requireNonNull(plugin.getConfig().getString("world_commands." + key + ".command")).replace("%player%", e.getPlayer().getName()));
+                        }
                     }
-                }
-            }else{
-                if (e.getPlayer().getWorld().getName().equalsIgnoreCase(key) ){
-                    if (player.hasPermission("jwc." + key)){
-                        player.performCommand(plugin.getConfig().getString("world_commands." + key + ".command").replace("%player%", e.getPlayer().getName()));
+                }else if (Objects.requireNonNull(plugin.getConfig().getString("world_commands." + key + ".executor")).equalsIgnoreCase("player"))
+                {
+                    if (player.getWorld().getName().equalsIgnoreCase(key) )
+                    {
+                        if (player.hasPermission("jwc.world." + key))
+                        {
+                            player.performCommand(Objects.requireNonNull(plugin.getConfig().getString("world_commands." + key + ".command")).replace("%player%", e.getPlayer().getName()));
+                        }
                     }
+                }else{
+                    plugin.getServer().getConsoleSender().sendMessage( ChatColor.BLUE + "[" + ChatColor.YELLOW + "JWC" + ChatColor.BLUE + "]" + ChatColor.YELLOW + " - " + ChatColor.RED + "There is an error at executor under " + ChatColor.YELLOW + "world_commands" + ChatColor.RED + " in config.yml. Has to be " + ChatColor.GREEN + "player " + ChatColor.RED + "or " + ChatColor.GREEN + "console");
                 }
             }
         }

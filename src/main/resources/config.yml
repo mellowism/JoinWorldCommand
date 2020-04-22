@@ -6,11 +6,12 @@
 #
 #
 #world_commands:
-#  world: #This is the name of your world.
+#  world: #This is the name of your world. Permission to trigger command is jwc.world.<world-name>
 #    command: hello #This is the command you want to execute. Use %player% for the name of the player that joins the world.
 #    executor: player #Who executes the command, player or console.
 # Example to create a join message: tellraw @a {"text":"%player% joined the world!", "color":"gold"}
 #
+enable_world_commands: true
 world_commands:
   world:
     command: hello
@@ -18,3 +19,13 @@ world_commands:
   world_the_end:
     command: hello
     executor: console
+
+#server_commands:
+#  first_command: #This can be anything you want and is the last part in the permission to trigger the command. In this example jwc.server.first_command
+#    command: hello #This is the command you want to execute. Use %player% for the name of the player that joins the world.
+#    executor: player #Who executes the command, player or console.
+enable_server_commands: false
+server_commands:
+  first_command:
+    command: hello
+    executor: player

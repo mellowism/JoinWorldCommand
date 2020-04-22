@@ -47,10 +47,10 @@ world_commands:
 
 ##### Commands
 
--/jwc reload
+-/jwc reload </br>  
 -/hello
 
 ##### Permissions
 
--jwc.reload
+-jwc.reload </br>  
 -jwc.hello

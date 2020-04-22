@@ -36,12 +36,12 @@ public class JwcCommand implements CommandExecutor {
                     plugin.reloadConfig();
                 }else{
                     player.sendMessage(ChatColor.RED + "You do not have the permission " + ChatColor.GREEN +  "jwc.reload");
-                    plugin.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[" + ChatColor.YELLOW + "JWC" + ChatColor.GREEN + "]" + ChatColor.YELLOW + " - " + ChatColor.GREEN + player.getDisplayName() + ChatColor.RED + " does not have the permission " + ChatColor.GREEN +  "jwc.reload.");
+                    plugin.getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[" + ChatColor.YELLOW + "JWC" + ChatColor.BLUE + "]" + ChatColor.YELLOW + " - " + ChatColor.GREEN + player.getDisplayName() + ChatColor.RED + " does not have the permission " + ChatColor.GREEN +  "jwc.reload.");
                 }
             }else{
                 //If no arguments are present, send message to player:
-                player.sendMessage(ChatColor.LIGHT_PURPLE + "You need to add the correct arguments to your command.");
-                player.sendMessage(ChatColor.LIGHT_PURPLE + "Type '/jwc reload' to reload plugin");
+                player.sendMessage(ChatColor.RED + "You need to add the correct arguments to your command.");
+                player.sendMessage(ChatColor.RED + "Type " + ChatColor.GRAY + "/" + ChatColor.GREEN + "jwc reload" + ChatColor.RED + " to reload plugin");
             }
             //If you are not player executing command:
         }else{

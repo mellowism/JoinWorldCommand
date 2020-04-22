@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="JoinWorldCommand:jar">
+    <output-path>C:/Minecraft server/plugins</output-path>
+    <root id="archive" name="JoinWorldCommand.jar">
+      <element id="module-output" name="JoinWorldCommand" />
+    </root>
+  </artifact>
+</component>
