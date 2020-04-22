@@ -3,6 +3,9 @@
 A simple plugin that makes it possible to add commands that execute when a player joins a world.
 
 ## Features
+- Send command when joining world and/or server
+- Module based
+- Control which command is being executed with custom permissions
 - Color code support
 - Player placeholder
 - Send commands as Console or Player
@@ -10,15 +13,9 @@ A simple plugin that makes it possible to add commands that execute when a playe
 - Create join message with link!
 
 
-
 ## To-Do
-
-- Fix set command
-
-##### *Optional:*
-- Use placeholder api?
-- Multiple commands (Has to be done with arraylist I suppose)
-- Permission based. Only run command if you have the permission.
+  - Add a delay in commands
+  - Placeholderapi?
 
 ###### Config.yml:
 
@@ -31,11 +28,12 @@ A simple plugin that makes it possible to add commands that execute when a playe
 #
 #
 #world_commands:
-#  world: #This is the name of your world.
+#  world: #This is the name of your world. Permission to trigger command is jwc.world.<world-name>
 #    command: hello #This is the command you want to execute. Use %player% for the name of the player that joins the world.
 #    executor: player #Who executes the command, player or console.
 # Example to create a join message: tellraw @a {"text":"%player% joined the world!", "color":"gold"}
 #
+enable_world_commands: true
 world_commands:
   world:
     command: hello
@@ -43,14 +41,27 @@ world_commands:
   world_the_end:
     command: hello
     executor: console
+
+#server_commands:
+#  first_command: #This can be anything you want and is the last part in the permission to trigger the command. In this example jwc.server.first_command
+#    command: hello #This is the command you want to execute. Use %player% for the name of the player that joins the world.
+#    executor: player #Who executes the command, player or console.
+enable_server_commands: false
+server_commands:
+  first_command:
+    command: hello
+    executor: player
 ```
 
 ##### Commands
 
--/jwc reload </br>  
--/hello
+  - /jwc reload   
+  - /hello  
 
 ##### Permissions
 
--jwc.reload </br>  
--jwc.hello
+
+  - jwc.reload    
+  - jwc.hello  
+  - jwc.server.'command'  
+  - jwc.world.'world-name'
