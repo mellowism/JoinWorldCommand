@@ -65,3 +65,5 @@ server_commands:
   - jwc.hello  
   - jwc.server.'command'  
   - jwc.world.'world-name'
+
+Spigot link: https://www.spigotmc.org/resources/joinworldcommand.67307/
