@@ -4,7 +4,6 @@ import com.mellowism.jwc.joinworldcommand.commands.HelloWorldCommand;
 import com.mellowism.jwc.joinworldcommand.commands.JwcCommand;
 import com.mellowism.jwc.joinworldcommand.events.JoinServerEvent;
 import com.mellowism.jwc.joinworldcommand.events.JoinWorldEvent;
-import com.tchristofferson.configupdater.ConfigUpdater;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -29,13 +28,7 @@ public final class JoinWorldCommand extends JavaPlugin {
         saveDefaultConfig();
 
         //Config-updater:
-        File configFile = new File(getDataFolder(), "config.yml");
-        try {
-            ConfigUpdater.update(this, "config.yml", configFile, Arrays.asList("world_commands"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        reloadConfig();
+        updateConfig("world_commands");
 
         //This is for enabling my commands:
         this.getCommand("jwc_hello").setExecutor(new HelloWorldCommand(this));
@@ -44,8 +37,39 @@ public final class JoinWorldCommand extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
+    public void onDisable()
+    {
         // Plugin shutdown logic
     }
+
+    public void updateConfig()
+    {
+        File configFile = new File(getDataFolder(), "config.yml");
+        try
+        {
+            ConfigUpdater.update(this, "config.yml", configFile, Arrays.asList());
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        reloadConfig();
+    }
+
+    public void updateConfig(String sectionsToIgnore)
+    {
+        File configFile = new File(getDataFolder(), "config.yml");
+        try
+
+        {
+            ConfigUpdater.update(this, "config.yml", configFile, Arrays.asList(sectionsToIgnore));
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        reloadConfig();
+    }
+
 
 }

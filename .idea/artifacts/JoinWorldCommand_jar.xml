@@ -3,6 +3,7 @@
     <output-path>C:/Minecraft server/plugins</output-path>
     <root id="archive" name="JoinWorldCommand.jar">
       <element id="module-output" name="JoinWorldCommand" />
+      <element id="library" level="project" name="Maven: com.tchristofferson:ConfigUpdater:1.1-SNAPSHOT" />
     </root>
   </artifact>
 </component>
