@@ -25,7 +25,8 @@ public class HelloWorldCommand implements CommandExecutor {
 
         if(sender instanceof Player) {
             Player player = (Player) sender;
-                if (player.hasPermission("jwc.hello")){
+                if (player.hasPermission("jwc.hello"))
+                {
                     player.sendMessage(ChatColor.GOLD + "Hello " + player.getWorld().getName());
                 }else{
                     plugin.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[" + ChatColor.YELLOW + "JWC" + ChatColor.GREEN + "]" + ChatColor.YELLOW + " - " + ChatColor.GREEN + player.getDisplayName() + ChatColor.RED + " does not have the permission " + ChatColor.GREEN +  "jwc.hello.");

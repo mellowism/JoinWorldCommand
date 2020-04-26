@@ -56,6 +56,8 @@ server_commands:
 ##### Commands
 
   - /jwc reload   
+  - /jwc world
+  - /jwc server
   - /hello  
 
 ##### Permissions
